@@ -17,13 +17,6 @@ import uvicorn
 import traceback
 from dotenv import load_dotenv
 
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "API is running successfully!"}
-
-
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
