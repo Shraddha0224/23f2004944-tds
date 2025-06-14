@@ -605,6 +605,10 @@ def parse_llm_response(response):
         }
 
 # Define API routes
+@app.post("/")
+async def root_post():
+    return {"message": "POST to / is working!"}
+
 @app.post("/query")
 async def query_knowledge_base(request: QueryRequest):
     try:
