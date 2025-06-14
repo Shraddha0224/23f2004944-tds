@@ -1,4 +1,3 @@
-# app.py
 import os
 import json
 import sqlite3
@@ -16,7 +15,17 @@ from fastapi.responses import JSONResponse
 import uvicorn
 import traceback
 from dotenv import load_dotenv
-import uvicorn
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "API is running successfully!"}
+@app.get("/")
+def read_root():
+    return {"message": "Hello from local version"}
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -25,7 +34,7 @@ logger = logging.getLogger(__name__)
 DB_PATH = "knowledge_base.db"
 SIMILARITY_THRESHOLD = 0.5 # Lowered threshold for better recall
 MAX_RESULTS = 10  # Increased to get more context
-
+load_dotenv()
 MAX_CONTEXT_CHUNKS = 4  # Increased number of chunks per source
 API_KEY = os.getenv("API_KEY")  # Get API key from environment variable
 
@@ -45,9 +54,6 @@ class QueryResponse(BaseModel):
 # Initialize FastAPI app
 app = FastAPI(title="RAG Query API", description="API for querying the RAG knowledge base")
 
-@app.get("/")
-def read_root():
-    return {"message": "API is running successfully!"}
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
