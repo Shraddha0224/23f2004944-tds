@@ -608,9 +608,10 @@ def parse_llm_response(response):
 @app.post("/")
 async def root_post():
     return {
-        "answer": "This is a Virtual TA endpoint. Please use /query for questions.",
+        "answer": "This is a Virtual TA root endpoint. Use /query to ask a question.",
         "links": []
     }
+
 
 @app.post("/query")
 async def query_knowledge_base(request: QueryRequest):
