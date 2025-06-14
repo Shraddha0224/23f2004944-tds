@@ -19,9 +19,6 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 
 
-@app.get("/")
-def read_root():
-    return {"message": "API is running successfully!"}
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -51,6 +48,9 @@ class QueryResponse(BaseModel):
 # Initialize FastAPI app
 app = FastAPI(title="RAG Query API", description="API for querying the RAG knowledge base")
 
+@app.get("/")
+def read_root():
+    return {"message": "API is running successfully!"}
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
