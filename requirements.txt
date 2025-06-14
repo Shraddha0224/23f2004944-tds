@@ -10,3 +10,6 @@ tqdm
 markdown
 python-multipart
 setuptools
+aiofiles
+pillow
+openai
