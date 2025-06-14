@@ -1,6 +1,7 @@
-from app import app  # FastAPI app defined in app.py
+# api/index.py
 
-def handler(request):
-    from mangum import Mangum
-    asgi_handler = Mangum(app)
-    return asgi_handler(request)
+from app import app  # This imports your FastAPI app from app.py
+from mangum import Mangum
+
+# This wraps the FastAPI app to make it compatible with Vercel's Lambda
+handler = Mangum(app)
