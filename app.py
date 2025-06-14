@@ -16,7 +16,7 @@ from fastapi.responses import JSONResponse
 import uvicorn
 import traceback
 from dotenv import load_dotenv
-
+import uvicorn
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 DB_PATH = "knowledge_base.db"
 SIMILARITY_THRESHOLD = 0.5 # Lowered threshold for better recall
 MAX_RESULTS = 10  # Increased to get more context
-load_dotenv()
+
 MAX_CONTEXT_CHUNKS = 4  # Increased number of chunks per source
 API_KEY = os.getenv("API_KEY")  # Get API key from environment variable
 
@@ -763,6 +763,6 @@ async def health_check():
             status_code=500,
             content={"status": "unhealthy", "error": str(e), "api_key_set": bool(API_KEY)}
         )
-#checking
-#if __name__ == "__main__":
- #   uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True) 
+if __name__ == "__main__":
+
+    uvicorn.run("app:app", host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
