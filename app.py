@@ -23,9 +23,6 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"message": "API is running successfully!"}
-@app.get("/")
-def read_root():
-    return {"message": "Hello from local version"}
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
